@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Urban IQ Connect — Compacte mini-laders voor de stad</title>
-    <meta name="description" content="Urban IQ Connect: compacte, slimme mini skid-steer loaders van IronCub voor krappe stedelijke en groene omgevingen. Vind je machine, vraag een demo aan of word dealer." />
+    <meta name="description" content="Urban IQ Connect: compacte, slimme mini skid-steer loaders voor krappe stedelijke en groene omgevingen. Vind je machine, vraag een demo aan of word dealer." />
     <link rel="canonical" href="https://urbaniqconnect.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Urban IQ Connect" />
     <meta property="og:title" content="Urban IQ Connect — Compacte mini-laders voor de stad" />
-    <meta property="og:description" content="Compacte, slimme mini-laders van IronCub. Gebouwd voor krappe ruimtes, zero-emissie en maximale wendbaarheid." />
+    <meta property="og:description" content="Compacte, slimme mini-laders. Gebouwd voor krappe ruimtes, zero-emissie en maximale wendbaarheid." />
     <meta property="og:url" content="https://urbaniqconnect.com/" />
+    <meta property="og:image" content="https://urbaniqconnect.com/assets/hero-city.jpg" />
     <meta name="theme-color" content="#121110" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,12 +21,13 @@
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/pages.css" />
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23121110'/%3E%3Cpath d='M9 22V10l7 5 7-5v12' fill='none' stroke='%23e8a93c' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
     <script type="application/ld+json">
-      { "@context": "https://schema.org", "@type": "Organization", "name": "Urban IQ Connect", "url": "https://urbaniqconnect.com", "brand": "IronCub", "description": "Compacte, slimme mini-laders voor de stedelijke omgeving." }
+      { "@context": "https://schema.org", "@type": "Organization", "name": "Urban IQ Connect", "url": "https://urbaniqconnect.com", "description": "Compacte, slimme mini-laders voor de stedelijke omgeving." }
     </script>
   </head>
   <body>
@@ -33,85 +35,151 @@
     <div data-include="header"></div>
 
     <main id="main">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero__bg"></div>
-        <div class="hero__grid"></div>
-        <div class="hero__inner">
-          <span class="eyebrow">Mini skid-steer loaders · Compacte kracht</span>
+      <!-- 1. FULL-BLEED HERO — emotie: machine aan het werk in de stad -->
+      <section class="hero-bleed">
+        <div class="hero-bleed__media">
+          <picture>
+            <source srcset="assets/hero-city.webp" type="image/webp" />
+            <img src="assets/hero-city.jpg" alt="Urban IQ mini-lader aan het werk in een Nederlandse stadsstraat bij gouden licht" width="1554" height="1012" fetchpriority="high" />
+          </picture>
+        </div>
+        <div class="hero-bleed__inner">
+          <span class="hero-bleed__eyebrow">Gebouwd voor de stad</span>
           <h1>Klein van stuk.<br /><span class="accent">Sterk</span> als een paard.</h1>
-          <p class="hero__lead">
-            De Urban IQ-mini­laders gaan waar grote machines vastlopen: smalle poorten, krappe
-            binnentuinen en bestrate werven. Compacte kracht, talloze aanbouwdelen, verbonden via Connect.
+          <p class="hero-bleed__lead">
+            Daar waar grote machines vastlopen — smalle poorten, krappe binnentuinen,
+            bestrate werven — gaat Urban IQ door. Compacte kracht, verbonden via Connect.
           </p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="machines.html">Bekijk machines
+          <div class="hero-bleed__actions">
+            <a class="btn btn--primary" href="machines.html">Ontdek de machines
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
             <a class="btn btn--ghost" href="contact.html">Demo aanvragen</a>
           </div>
-          <dl class="hero__stats">
-            <div class="stat"><dd class="stat__num">&lt;1m</dd><dt class="stat__label">Doorrijbreedte</dt></div>
-            <div class="stat"><dd class="stat__num">500<small>kg</small></dd><dt class="stat__label">Hefvermogen</dt></div>
-            <div class="stat"><dd class="stat__num">12+</dd><dt class="stat__label">Aanbouwdelen</dt></div>
-            <div class="stat"><dd class="stat__num">24/7</dd><dt class="stat__label">Connect-data</dt></div>
-          </dl>
-        </div>
-        <div class="hero__visual">
-          <picture>
-            <source srcset="assets/machine-wheels.webp" type="image/webp" />
-            <img src="assets/machine-wheels.jpg" alt="Urban IQ mini skid-steer loader op wielen met laadbak" width="1400" height="1080" fetchpriority="high" />
-          </picture>
         </div>
       </section>
 
-      <!-- VIND JE MACHINE -->
+      <!-- 2. HERO-STATS BALK -->
+      <section class="hero-stats">
+        <dl class="hero-stats__inner">
+          <div class="stat"><dd class="stat__num">&lt;1<small>m</small></dd><dt class="stat__label">Doorrijbreedte</dt></div>
+          <div class="stat"><dd class="stat__num">500<small>kg</small></dd><dt class="stat__label">Hefvermogen</dt></div>
+          <div class="stat"><dd class="stat__num">12+</dd><dt class="stat__label">Aanbouwdelen</dt></div>
+          <div class="stat"><dd class="stat__num">24/7</dd><dt class="stat__label">Connect-data</dt></div>
+        </dl>
+      </section>
+
+      <!-- 3. TOEPASSINGEN IN DE STAD — beeldkaarten-rij -->
       <section class="section" id="toepassingen">
         <div class="wrap">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">Vind je machine</span>
-              <h2>Begin bij de klus, niet bij de specs</h2>
-            </div>
-            <p>Kies je toepassing en wij tonen de machines die voor jouw omgeving gebouwd zijn.</p>
+          <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">Toepassingen in de stad</span>
+            <h2>Begin bij de klus, niet bij de specs</h2>
+            <p>Vier omgevingen waar compacte kracht en wendbaarheid het verschil maken.</p>
           </div>
-          <div class="tile-grid">
-            <a class="tile" href="machines.html" data-reveal>
-              <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6" stroke-linejoin="round"/></svg></span>
-              <h3>Stedelijk groen</h3>
+          <div class="cardrow">
+            <a class="imgcard" href="machines.html" data-reveal>
+              <div class="imgcard__media">
+                <picture><source srcset="assets/app-groen.webp" type="image/webp" /><img src="assets/app-groen.jpg" alt="Mini-lader in stedelijk groen tussen bomen en plantsoen" loading="lazy" /></picture>
+              </div>
+              <span class="imgcard__label">Stedelijk groen
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
               <p>Plantsoenen, parken en boomspiegels — wendbaar tussen obstakels.</p>
-              <span class="tile__arrow">Bekijk machines →</span>
             </a>
-            <a class="tile" href="machines.html" data-reveal>
-              <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20h20M4 20v-8l6-3 6 3v8M9 20v-5h2v5" stroke-linejoin="round"/></svg></span>
-              <h3>Binnenstad &amp; bouw</h3>
+            <a class="imgcard" href="machines.html" data-reveal>
+              <div class="imgcard__media">
+                <picture><source srcset="assets/hero-city.webp" type="image/webp" /><img src="assets/hero-city.jpg" alt="Mini-lader in een smalle binnenstadsstraat" loading="lazy" /></picture>
+              </div>
+              <span class="imgcard__label">Binnenstad &amp; bouw
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
               <p>Sloop, graafwerk en transport in smalle straten en binnenterreinen.</p>
-              <span class="tile__arrow">Bekijk machines →</span>
             </a>
-            <a class="tile" href="machines.html" data-reveal>
-              <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3" stroke-linecap="round"/><circle cx="12" cy="12" r="3"/></svg></span>
-              <h3>Vastgoed &amp; beheer</h3>
+            <a class="imgcard" href="machines.html" data-reveal>
+              <div class="imgcard__media">
+                <picture><source srcset="assets/machine-wheels.webp" type="image/webp" /><img src="assets/machine-wheels.jpg" alt="Urban IQ wiellader bij vastgoedbeheer" loading="lazy" /></picture>
+              </div>
+              <span class="imgcard__label">Vastgoed &amp; beheer
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
               <p>Onderhoud van complexen, daktuinen en logistieke binnenhoven.</p>
-              <span class="tile__arrow">Bekijk machines →</span>
             </a>
-            <a class="tile" href="machines.html" data-reveal>
-              <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z" stroke-linejoin="round"/><path d="M3 7v6l9 4 9-4V7M3 13v4l9 4 9-4v-4" stroke-linejoin="round"/></svg></span>
-              <h3>Gemeente &amp; infra</h3>
-              <p>Inzetbaar over je hele areaal, met fleetdata in één dashboard.</p>
-              <span class="tile__arrow">Bekijk machines →</span>
+            <a class="imgcard" href="machines.html" data-reveal>
+              <div class="imgcard__media">
+                <picture><source srcset="assets/machine-tracks.webp" type="image/webp" /><img src="assets/machine-tracks.jpg" alt="Urban IQ rupslader voor gemeente en infra" loading="lazy" /></picture>
+              </div>
+              <span class="imgcard__label">Gemeente &amp; infra
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
+              <p>Inzetbaar over je hele areaal, met vlootdata in één dashboard.</p>
             </a>
           </div>
         </div>
       </section>
 
-      <!-- UITGELICHTE MACHINES -->
-      <section class="section" id="machines" style="padding-top: 0">
+      <!-- 4. ALTERNERENDE FEATURE-RIJEN — systeem boven specs -->
+      <section class="section section--surface">
         <div class="wrap">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">De Urban IQ-lijn</span>
-              <h2>Eén platform. Jouw ondergrond.</h2>
+          <!-- Connect -->
+          <div class="feature-row" data-reveal>
+            <div class="feature-row__body">
+              <span class="eyebrow">Connect-platform</span>
+              <h3>Niet zomaar machines. Een verbonden vloot.</h3>
+              <p>Connect tilt elke machine van losse aanwinst naar onderdeel van je digitale werf. Live inzicht, voorspeld onderhoud, één dashboard.</p>
+              <ul class="feature-row__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Locatie, accustatus en draaiuren in realtime</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Voorspeld onderhoud — vóór stilstand</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Eén platform voor je hele vloot</li>
+              </ul>
+              <a class="btn btn--ghost" href="connect.html">Ontdek Connect</a>
             </div>
+            <div class="feature-row__media">
+              <picture><source srcset="assets/connect-cab.webp" type="image/webp" /><img src="assets/connect-cab.jpg" alt="Operator bekijkt telemetrie op een tablet in de cabine" loading="lazy" /></picture>
+            </div>
+          </div>
+
+          <!-- Service -->
+          <div class="feature-row feature-row--reverse" data-reveal>
+            <div class="feature-row__body">
+              <span class="eyebrow">Service &amp; support</span>
+              <h3>Uptime is de afspraak.</h3>
+              <p>Onderhoud op afstand voorspeld door Connect, onderdelen op voorraad en een servicenetwerk dat binnen 24 uur ter plaatse is. Jouw machine staat niet stil.</p>
+              <ul class="feature-row__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Servicenetwerk binnen 24 uur ter plaatse</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Onderdelen op voorraad, snelle wissel</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 12+ aanbouwdelen, 30s wisseltijd</li>
+              </ul>
+              <a class="btn btn--ghost" href="service.html">Naar support</a>
+            </div>
+            <div class="feature-row__media">
+              <picture><source srcset="assets/service-shop.webp" type="image/webp" /><img src="assets/service-shop.jpg" alt="Technicus voert onderhoud uit aan een Urban IQ machine in de werkplaats" loading="lazy" /></picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. DONKER FULL-BLEED MEDIA-BLOK -->
+      <section class="mediaband">
+        <div class="mediaband__media">
+          <picture><source srcset="assets/machine-tracks.webp" type="image/webp" /><img src="assets/machine-tracks.jpg" alt="Urban IQ rupslader in actie" loading="lazy" /></picture>
+        </div>
+        <div class="mediaband__inner" data-reveal>
+          <span class="eyebrow">Zero-emissie</span>
+          <h2>Stil, schoon, en overal toegelaten.</h2>
+          <p>Volledig elektrisch — geen uitstoot, weinig geluid, toegang tot elke milieuzone. De stad van morgen vraagt om machines die er thuishoren.</p>
+          <a class="btn btn--primary" href="machines.html">Bekijk de lijn
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- 6. DE LIJN — twee modellen + aanbouwdelen -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">De Urban IQ-lijn</span>
+            <h2>Eén platform. Jouw ondergrond.</h2>
             <p>Kies rups voor maximale grip, of wielen voor snelheid op verharde grond. Beide standaard met Connect.</p>
           </div>
           <div class="machine-grid">
@@ -169,57 +237,23 @@
         </div>
       </section>
 
-      <!-- USP STRIP -->
-      <section class="usp section">
+      <!-- 7. TWEE-KOLOMS CTA — dealer + demo -->
+      <section class="section section--surface">
         <div class="wrap">
-          <div class="section-head" data-reveal>
-            <div>
-              <span class="eyebrow">Waarom Urban IQ</span>
-              <h2>Niet zomaar machines. Een verbonden vloot.</h2>
-            </div>
-            <p>Connect tilt elke machine van losse aanwinst naar onderdeel van je digitale werf.</p>
-          </div>
-          <div class="usp-grid">
-            <div class="usp__item" data-reveal><span class="usp__num">01</span><h3>Gebouwd voor krapte</h3><p>Doorrijbreedtes onder de meter en een draaicirkel die in elke binnenstad past.</p></div>
-            <div class="usp__item" data-reveal><span class="usp__num">02</span><h3>Zero-emissie</h3><p>Volledig elektrisch — stil, schoon en toegelaten in elke milieuzone.</p></div>
-            <div class="usp__item" data-reveal><span class="usp__num">03</span><h3>Live telemetrie</h3><p>Locatie, accustatus, draaiuren en onderhoud — realtime in één dashboard.</p></div>
-            <div class="usp__item" data-reveal><span class="usp__num">04</span><h3>Eén platform</h3><p>Wissel aanbouwdelen, plan onderhoud en beheer je hele vloot via Connect.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SERVICE + DEALER TEASER -->
-      <section class="section">
-        <div class="wrap">
-          <div class="split">
-            <div class="panel" data-reveal>
-              <span class="eyebrow">Service &amp; support</span>
-              <h3>Uptime is de afspraak</h3>
-              <p>Onderhoud op afstand voorspeld door Connect, onderdelen op voorraad en een servicenetwerk dat binnen 24 uur ter plaatse is. Jouw machine staat niet stil.</p>
-              <a class="btn btn--ghost" href="service.html">Naar support</a>
-            </div>
-            <div class="panel panel--gold" data-reveal>
+          <div class="duo">
+            <div class="duo__panel" data-reveal>
               <span class="eyebrow">Dealer worden</span>
               <h3>Bouw mee aan het netwerk</h3>
-              <p>Word dealer of servicepartner van Urban IQ Connect en breng compacte, slimme machines naar jouw regio. We zoeken partners die de stad net zo goed kennen als wij.</p>
-              <a class="btn btn--primary" href="dealer.html">Word dealer</a>
+              <p>Word dealer of servicepartner en breng compacte, slimme machines naar jouw regio. We zoeken partners die de stad net zo goed kennen als wij.</p>
+              <a class="btn btn--ghost" href="dealer.html">Word dealer</a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA BAND -->
-      <section class="section" style="padding-top: 0">
-        <div class="wrap">
-          <div class="cta-band" data-reveal>
-            <span class="eyebrow" style="justify-content: center">Klaar voor de klus?</span>
-            <h2>Plan een demo op jouw eigen werf</h2>
-            <p>We laten de Urban IQ-lijn zien waar jij werkt. Vertel ons je toepassing en regio, dan koppelen we de juiste machine en dichtstbijzijnde dealer.</p>
-            <div class="cta-band__actions">
+            <div class="duo__panel duo__panel--dark" data-reveal>
+              <span class="eyebrow">Klaar voor de klus?</span>
+              <h3>Plan een demo op jouw werf</h3>
+              <p>We laten de Urban IQ-lijn zien waar jij werkt. Vertel ons je toepassing en regio, dan koppelen we de juiste machine en dichtstbijzijnde dealer.</p>
               <a class="btn btn--primary" href="contact.html">Demo aanvragen
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
-              <a class="btn btn--ghost" href="machines.html">Bekijk alle machines</a>
             </div>
           </div>
         </div>

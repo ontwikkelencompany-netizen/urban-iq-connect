@@ -5,14 +5,9 @@
    pagina's exact op één verticale as uitlijnen.
    ============================================================ */
 
-/* ---------- Page hero (binnenpagina's) ---------- */
-.page-hero {
-  position: relative;
-  padding-top: clamp(8rem, 12vw, 11rem);
-  padding-bottom: clamp(var(--space-12), 6vw, var(--space-20));
-  overflow: hidden;
-  isolation: isolate;
-}
+/* ---------- Page hero (binnenpagina's) ----------
+   VERVANGEN door css/layout.css (.page-hero + --image variant).
+   .page-hero__bg blijft als sfeer-achtergrond voor plain hero's. */
 .page-hero__bg {
   position: absolute;
   inset: 0;
@@ -20,20 +15,6 @@
   background:
     radial-gradient(100% 70% at 85% 0%, rgba(200, 164, 78, 0.12), transparent 55%),
     var(--color-bg);
-}
-.page-hero__inner {
-  max-width: 60ch;
-}
-.page-hero h1 {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  margin-top: var(--space-4);
-}
-.page-hero .lead {
-  margin-top: var(--space-5);
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  max-width: 56ch;
 }
 .page-hero__actions {
   margin-top: var(--space-8);

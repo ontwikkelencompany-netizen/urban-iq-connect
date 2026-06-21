@@ -1,6 +1,6 @@
 /* ============================================================
    URBAN IQ CONNECT — Design System (tokens)
-   Merk: IronCub / Urban IQ — industrieel premium, zwart-goud
+   Merk: Urban IQ Connect — industrieel premium, zwart-goud
    Fonts: Barlow Condensed (display) + Inter (body)
    ============================================================ */
 
@@ -56,7 +56,7 @@
    ============================================================ */
 :root,
 [data-theme='dark'] {
-  /* IronCub kern: zwart-goud-cream */
+  /* Kern: zwart-goud-cream */
   --color-bg: #121110;
   --color-surface: #1a1918;
   --color-surface-2: #201f1d;

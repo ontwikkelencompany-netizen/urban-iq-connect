@@ -7,24 +7,33 @@
 (function () {
   'use strict';
 
-  /* ---------- Navigatie-definitie (één bron) ---------- */
+  /* ---------- Navigatie-definitie (één bron, mega-menu) ---------- */
   var NAV = [
-    { href: 'machines.html', label: 'Machines' },
-    { href: 'connect.html', label: 'Connect' },
-    { href: 'service.html', label: 'Service' },
-    { href: 'dealer.html', label: 'Dealer worden' },
-    { href: 'over-ons.html', label: 'Over ons' }
+    { label: 'Machines', top: 'machines.html', children: [
+      ['machines.html', 'Alle machines', 'Het volledige overzicht'],
+      ['t-300.html', 'Urban IQ T-300', 'Rups · maximale grip'],
+      ['w-300.html', 'Urban IQ W-300', 'Wielen · snelheid'],
+      ['aanbouwdelen.html', 'Aanbouwdelen', '12+ werktuigen, 30s wissel']
+    ]},
+    { label: 'Platform', top: 'connect.html', children: [
+      ['connect.html', 'Connect-platform', 'Je vloot, live in één dashboard'],
+      ['service.html', 'Service & support', 'Uptime als afspraak']
+    ]},
+    { label: 'Dealer', top: 'dealer.html', children: [
+      ['dealer.html', 'Dealer worden', 'Bouw mee aan het netwerk'],
+      ['contact.html', 'Demo aanvragen', 'Op jouw eigen werf']
+    ]},
+    { label: 'Over ons', top: 'over-ons.html', children: [
+      ['over-ons.html', 'Over Urban IQ', 'Wie we zijn en waarom'],
+      ['contact.html', 'Contact', 'Direct in gesprek']
+    ]}
   ];
 
   var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   if (page === '') page = 'index.html';
 
-  // Productdetail- en sub-pagina's markeren "Machines" als actief
-  var MACHINE_PAGES = ['machines.html', 't-300.html', 'w-300.html', 'aanbouwdelen.html'];
-
-  function isActive(href) {
-    if (href === 'machines.html') return MACHINE_PAGES.indexOf(page) !== -1;
-    return href === page;
+  function topActive(group) {
+    return group.children.some(function (c) { return c[0] === page; });
   }
 
   var BRAND = ''
@@ -35,23 +44,57 @@
     + '<span class="brand__sub">Connect</span></span>'
     + '</a>';
 
+  var CARET = '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+  var GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>';
+  var PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+
   /* ---------- Header ---------- */
   function headerHTML() {
-    var links = NAV.map(function (n) {
-      return '<a class="nav__link' + (isActive(n.href) ? ' is-active' : '') + '" href="' + n.href + '">' + n.label + '</a>';
-    }).join('');
-    return ''
-      + '<header class="site-header">'
-      + BRAND
-      + '<nav class="nav" aria-label="Hoofdnavigatie">' + links + '</nav>'
-      + '<div class="header-actions">'
+    var topbar = ''
+      + '<div class="topbar"><div class="topbar__inner">'
+      + '<button class="icon-btn menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false">'
+      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>'
+      + '<a class="topbar__link" href="dealer.html">' + GLOBE + '<span>Word dealer</span></a>'
+      + '<span class="topbar__sep">·</span>'
+      + '<a class="topbar__link" href="contact.html">' + PIN + '<span>Vind een dealer</span></a>'
+      + '</div></div>';
+
+    var headbar = ''
+      + '<div class="headbar">' + BRAND
+      + '<div class="headbar__right">'
       + '<button class="icon-btn" data-theme-toggle type="button" aria-label="Wissel thema"></button>'
       + '<a class="btn btn--primary header-cta" href="contact.html">Demo aanvragen</a>'
-      + '<button class="icon-btn menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false">'
-      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
-      + '</button>'
-      + '</div>'
-      + '</header>';
+      + '</div></div>';
+
+    var items = NAV.map(function (g) {
+      var act = topActive(g) ? ' is-active' : '';
+      var sub = g.children.map(function (c) {
+        return '<a href="' + c[0] + '"><strong>' + c[1] + '</strong><span>' + c[2] + '</span></a>';
+      }).join('');
+      return '<div class="nav-item">'
+        + '<a class="nav__link' + act + '" href="' + g.top + '">' + g.label + CARET + '</a>'
+        + '<div class="megamenu">' + sub + '</div>'
+        + '</div>';
+    }).join('');
+    var navbar = '<div class="navbar"><nav class="navbar__inner" aria-label="Hoofdnavigatie">' + items + '</nav></div>';
+
+    return '<header class="site-header">' + topbar + headbar + navbar + '</header>' + mobileNavHTML();
+  }
+
+  /* ---------- Mobiel menu ---------- */
+  function mobileNavHTML() {
+    var groups = NAV.map(function (g) {
+      var open = topActive(g) ? ' is-open' : '';
+      var sub = g.children.map(function (c) {
+        return '<a href="' + c[0] + '">' + c[1] + '</a>';
+      }).join('');
+      return '<div class="mobile-nav__group' + open + '">'
+        + '<button class="mobile-nav__head" type="button">' + g.label + CARET + '</button>'
+        + '<div class="mobile-nav__sub">' + sub + '</div>'
+        + '</div>';
+    }).join('');
+    return '<nav class="mobile-nav" aria-label="Mobiele navigatie">' + groups
+      + '<a class="btn btn--primary mobile-nav__cta" href="contact.html">Demo aanvragen</a></nav>';
   }
 
   /* ---------- Footer ---------- */
@@ -61,7 +104,7 @@
       + '<div class="wrap">'
       + '<div class="footer-grid">'
       + '<div class="footer-brand">' + BRAND
-      + '<p>Compacte, slimme mini-laders voor de stedelijke omgeving. Een product van IronCub.</p>'
+      + '<p>Compacte, slimme mini-laders voor de stedelijke omgeving. Gebouwd voor professionals die in de stad werken.</p>'
       + '<div class="footer-contact">'
       + '<a href="mailto:info@urbaniqconnect.com">info@urbaniqconnect.com</a>'
       + '<a href="dealer.html">Dealer of servicepartner worden</a>'
@@ -87,7 +130,7 @@
         ])
       + '</div>'
       + '<div class="footer-bottom">'
-      + '<span>© ' + new Date().getFullYear() + ' Urban IQ Connect · IronCub. Alle rechten voorbehouden.</span>'
+      + '<span>© ' + new Date().getFullYear() + ' Urban IQ Connect. Alle rechten voorbehouden.</span>'
       + '<span class="footer-bottom__links"><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="voorwaarden.html">Voorwaarden</a></span>'
       + '</div>'
       + '</div>'
@@ -155,21 +198,39 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* ---------- Mobiel menu ---------- */
-  var menuBtn = document.querySelector('.menu-toggle');
-  var nav = document.querySelector('.nav');
-  if (menuBtn && nav) {
-    menuBtn.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-      document.body.classList.toggle('nav-open', open);
+  /* ---------- Mobiel menu (off-canvas + accordion) ---------- */
+  var mobileNav = document.querySelector('.mobile-nav');
+  var menuToggles = document.querySelectorAll('.menu-toggle');
+
+  function setMenu(open) {
+    if (!mobileNav) return;
+    mobileNav.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
+    menuToggles.forEach(function (b) { b.setAttribute('aria-expanded', String(open)); });
+  }
+
+  if (mobileNav && menuToggles.length) {
+    menuToggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setMenu(!mobileNav.classList.contains('is-open'));
+      });
     });
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('.nav__link')) {
-        nav.classList.remove('is-open');
-        document.body.classList.remove('nav-open');
-        menuBtn.setAttribute('aria-expanded', 'false');
+
+    // Accordion: klik op groep-kop opent/sluit die groep
+    mobileNav.addEventListener('click', function (e) {
+      var head = e.target.closest('.mobile-nav__head');
+      if (head) {
+        var group = head.closest('.mobile-nav__group');
+        if (group) group.classList.toggle('is-open');
+        return;
       }
+      // Klik op een link sluit het hele menu
+      if (e.target.closest('a')) setMenu(false);
+    });
+
+    // Escape sluit het menu
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
     });
   }
 

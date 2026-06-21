@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/pages.css" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23121110'/%3E%3Cpath d='M9 22V10l7 5 7-5v12' fill='none' stroke='%23e8a93c' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E" />
   </head>
@@ -21,8 +22,10 @@
     <div data-include="header"></div>
 
     <main id="main">
-      <section class="page-hero">
-        <div class="page-hero__bg"></div>
+      <section class="page-hero page-hero--image">
+        <div class="page-hero__media">
+          <picture><source srcset="assets/service-shop.webp" type="image/webp" /><img src="assets/service-shop.jpg" alt="Aanbouwdelen en werktuigen in de werkplaats" loading="eager" /></picture>
+        </div>
         <div class="wrap">
           <nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span>/</span><a href="machines.html">Machines</a><span>/</span><span aria-current="page">Aanbouwdelen</span></nav>
           <div class="page-hero__inner">

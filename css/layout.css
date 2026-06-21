@@ -1,0 +1,625 @@
+/* ============================================================
+   layout.css — Urban IQ Connect
+   Volvo CE layout-DNA, toegepast in dark premium huisstijl.
+   Topbalk · logo-blok · mega-menu · full-bleed hero ·
+   beeldkaarten-rij · alternerende feature-rijen ·
+   donker media-blok · twee-koloms CTA · toepassingen ·
+   page-hero · news/lijst-rijen.
+   ============================================================ */
+
+/* ============================================================
+   1. HEADER — topbalk + logo-blok + mega-menu nav
+   ============================================================ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.is-scrolled {
+  border-bottom-color: var(--color-divider);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Topbalk (utility) ---- */
+.topbar {
+  background: #0c0b0a;
+  border-bottom: 1px solid var(--color-divider);
+}
+[data-theme='light'] .topbar {
+  background: #1a1918;
+}
+.topbar__inner {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: 0.45rem clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-6);
+}
+.topbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #b8b2a8;
+}
+.topbar__link:hover { color: var(--color-primary); }
+.topbar__link svg { width: 14px; height: 14px; flex: none; }
+.topbar__sep { color: #4a4640; font-size: 0.75rem; }
+
+/* ---- Logo-rij ---- */
+.headbar {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: var(--space-4) clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.brand__mark { width: 44px; height: auto; flex: none; }
+.brand__mark--black { display: none; }
+[data-theme='light'] .brand__mark--cream { display: none; }
+[data-theme='light'] .brand__mark--black { display: block; }
+.brand__name { font-size: var(--text-lg); line-height: 1; }
+.brand__name b { font-weight: 700; }
+.brand__sub {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+
+.headbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  flex: none;
+}
+.icon-btn:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+/* ---- Primaire navigatiebalk + mega-menu ---- */
+.navbar {
+  border-top: 1px solid var(--color-divider);
+  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+}
+.navbar__inner {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(var(--space-2), 2vw, var(--space-10));
+}
+.nav-item { position: relative; display: flex; }
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  position: relative;
+}
+.nav__link:hover,
+.nav-item.is-open .nav__link { color: var(--color-text); }
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-interactive);
+}
+.nav__link:hover::after,
+.nav__link.is-active::after,
+.nav-item.is-open .nav__link::after { transform: scaleX(1); }
+.nav__link.is-active { color: var(--color-text); }
+.nav__link .caret { width: 12px; height: 12px; transition: transform var(--transition-interactive); }
+.nav-item.is-open .nav__link .caret { transform: rotate(180deg); }
+
+/* Mega-menu paneel */
+.megamenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 8px);
+  min-width: 280px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 120;
+}
+.nav-item:hover .megamenu,
+.nav-item.is-open .megamenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.megamenu a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+}
+.megamenu a:hover { background: var(--color-surface-2); }
+.megamenu a strong {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.megamenu a span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---- Mobiel menu ---- */
+.menu-toggle { display: none; }
+@media (max-width: 920px) {
+  .navbar { display: none; }
+  .menu-toggle { display: grid; }
+  .topbar__inner { justify-content: space-between; }
+  .mobile-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(86vw, 360px);
+    z-index: 130;
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    padding: var(--space-8) var(--space-6);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .mobile-nav.is-open { transform: none; }
+  .mobile-nav__group { border-bottom: 1px solid var(--color-divider); padding-block: var(--space-2); }
+  .mobile-nav__head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+  .mobile-nav__head .caret { width: 16px; height: 16px; transition: transform 0.25s ease; }
+  .mobile-nav__group.is-open .caret { transform: rotate(180deg); }
+  .mobile-nav__sub {
+    display: grid;
+    gap: var(--space-1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .mobile-nav__group.is-open .mobile-nav__sub { max-height: 400px; }
+  .mobile-nav__sub a {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+  }
+  .mobile-nav__sub a:hover { color: var(--color-primary); }
+  .mobile-nav__cta { margin-top: var(--space-5); }
+  body.nav-open::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 125;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(2px);
+  }
+}
+@media (min-width: 921px) { .mobile-nav { display: none; } }
+
+/* Header-hoogte compensatie (fixed) */
+:root { --header-h: 152px; }
+@media (max-width: 920px) { :root { --header-h: 104px; } }
+
+/* ============================================================
+   2. FULL-BLEED HERO (Volvo "Building Tomorrow")
+   ============================================================ */
+.hero-bleed {
+  position: relative;
+  min-height: min(92svh, 880px);
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+  margin-top: var(--header-h);
+  overflow: hidden;
+}
+.hero-bleed__media { position: absolute; inset: 0; z-index: -2; }
+.hero-bleed__media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bleed::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(10,9,8,.35) 0%, rgba(10,9,8,.05) 35%, rgba(10,9,8,.55) 78%, rgba(10,9,8,.92) 100%),
+    linear-gradient(90deg, rgba(10,9,8,.7) 0%, rgba(10,9,8,.15) 45%, transparent 70%);
+}
+.hero-bleed__inner {
+  width: 100%;
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(var(--space-12), 7vw, var(--space-24));
+}
+.hero-bleed .eyebrow { color: var(--color-primary); }
+.hero-bleed__eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e9e3d8;
+}
+.hero-bleed h1 {
+  color: #fff;
+  font-size: var(--text-hero);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-top: var(--space-4);
+  max-width: 16ch;
+  text-shadow: 0 2px 30px rgba(0,0,0,.4);
+}
+.hero-bleed h1 .accent { color: var(--color-primary); }
+.hero-bleed__lead {
+  color: #e4ded3;
+  font-size: var(--text-lg);
+  max-width: 54ch;
+  margin-top: var(--space-6);
+}
+.hero-bleed__actions {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.hero-bleed .btn--ghost { color: #fff; border-color: rgba(255,255,255,.4); }
+.hero-bleed .btn--ghost:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+/* Hero-stats balk onder hero */
+.hero-stats {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-divider);
+}
+.hero-stats__inner {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: clamp(var(--space-6), 3vw, var(--space-10)) clamp(1.25rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+.hero-stats .stat { border-left: 2px solid var(--color-primary); padding-left: var(--space-4); }
+.stat__num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+.stat__num small { font-size: 0.5em; color: var(--color-text-muted); }
+.stat__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+@media (max-width: 720px) {
+  .hero-stats__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-7) var(--space-4); }
+}
+
+/* ============================================================
+   3. PAGE-HERO (binnenpagina's)
+   ============================================================ */
+.page-hero {
+  position: relative;
+  margin-top: var(--header-h);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-divider);
+}
+.page-hero--image { min-height: 52svh; display: flex; align-items: flex-end; }
+.page-hero--image .page-hero__media { position: absolute; inset: 0; z-index: -2; }
+.page-hero--image .page-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.page-hero--image::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(10,9,8,.3) 0%, rgba(10,9,8,.4) 55%, rgba(10,9,8,.9) 100%);
+}
+.page-hero--image h1, .page-hero--image .page-hero__lead { color: #fff; }
+.page-hero--image .eyebrow { color: var(--color-primary); }
+.page-hero__inner {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: clamp(var(--space-12), 7vw, var(--space-20)) clamp(1.25rem, 4vw, 3rem);
+}
+.page-hero h1 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: var(--space-4);
+  max-width: 18ch;
+}
+.page-hero__lead,
+.page-hero .lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin-top: var(--space-5);
+}
+.page-hero--image .page-hero__lead,
+.page-hero--image .lead { color: #e4ded3; }
+
+/* Breadcrumb */
+.crumbs {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-4);
+}
+.crumbs a:hover { color: var(--color-primary); }
+.page-hero--image .crumbs { color: #cfc8bd; }
+/* Bestaande .breadcrumb leesbaar op beeld-hero */
+.page-hero--image .breadcrumb { color: #cfc8bd; }
+.page-hero--image .breadcrumb a { color: #e9e3d8; }
+.page-hero--image .breadcrumb a:hover { color: var(--color-primary); }
+.page-hero--image .breadcrumb span[aria-current] { color: #fff; }
+.page-hero--image .eyebrow { color: var(--color-primary); }
+
+/* ============================================================
+   4. SECTIE-KOP (Volvo: links uitgelijnd of gecentreerd)
+   ============================================================ */
+.section-head {
+  margin-bottom: clamp(var(--space-8), 4vw, var(--space-12));
+}
+.section-head--center { text-align: center; max-width: 60ch; margin-inline: auto; }
+.section-head--center .eyebrow { justify-content: center; }
+.section-head h2 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: var(--space-3);
+  max-width: 22ch;
+}
+.section-head--center h2 { margin-inline: auto; }
+.section-head p {
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+  max-width: 56ch;
+}
+.section-head--center p { margin-inline: auto; }
+
+/* ============================================================
+   5. BEELDKAARTEN-RIJ (Volvo 4-koloms, randloos)
+   ============================================================ */
+.cardrow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+.cardrow--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cardrow--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.imgcard { display: flex; flex-direction: column; gap: var(--space-4); }
+.imgcard__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+.imgcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.imgcard:hover .imgcard__media img { transform: scale(1.05); }
+.imgcard__media--icon { display: grid; place-items: center; background:
+  radial-gradient(80% 80% at 50% 35%, rgba(200,164,78,.12), transparent 70%), var(--color-surface-2); }
+.imgcard__media--icon svg { width: 46%; color: var(--color-primary); opacity: .92; }
+.imgcard__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+.imgcard__label svg { width: 20px; height: 20px; color: var(--color-primary); transition: transform var(--transition-interactive); }
+.imgcard:hover .imgcard__label svg { transform: translateX(5px); }
+.imgcard p { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* ============================================================
+   6. ALTERNERENDE FEATURE-RIJ (Volvo "This is Volvo CE")
+   ============================================================ */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(var(--space-8), 5vw, var(--space-20));
+}
+.feature-row + .feature-row { margin-top: clamp(var(--space-16), 8vw, var(--space-24)); }
+.feature-row--reverse .feature-row__media { order: -1; }
+.feature-row__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background: var(--color-surface-2);
+}
+.feature-row__media img { width: 100%; height: 100%; object-fit: cover; }
+.feature-row__body h3 {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-top: var(--space-3);
+  max-width: 20ch;
+}
+.feature-row__body p { color: var(--color-text-muted); margin-block: var(--space-4) var(--space-6); }
+.feature-row__list { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
+.feature-row__list li {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  font-size: var(--text-sm); color: var(--color-text-muted); list-style: none;
+}
+.feature-row__list svg { width: 18px; height: 18px; color: var(--color-primary); flex: none; margin-top: 3px; }
+
+/* ============================================================
+   7. DONKER FULL-BLEED MEDIA-BLOK (Volvo "Change starts...")
+   ============================================================ */
+.mediaband {
+  position: relative;
+  min-height: min(70svh, 620px);
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+}
+.mediaband__media { position: absolute; inset: 0; z-index: -2; }
+.mediaband__media img { width: 100%; height: 100%; object-fit: cover; }
+.mediaband::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(10,9,8,.92) 0%, rgba(10,9,8,.6) 45%, rgba(10,9,8,.25) 100%);
+}
+.mediaband__inner {
+  width: 100%;
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: clamp(var(--space-12), 6vw, var(--space-20)) clamp(1.25rem, 4vw, 3rem);
+}
+.mediaband .eyebrow { color: var(--color-primary); }
+.mediaband h2 {
+  color: #fff;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: var(--space-4);
+  max-width: 16ch;
+}
+.mediaband p { color: #e4ded3; max-width: 48ch; margin-block: var(--space-5) var(--space-8); }
+
+/* ============================================================
+   8. TWEE-KOLOMS CTA-BLOKKEN (Volvo locations / jobs)
+   ============================================================ */
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+.duo__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: clamp(var(--space-10), 5vw, var(--space-20)) clamp(var(--space-6), 4vw, var(--space-16));
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  min-height: 300px;
+}
+.duo__panel--dark {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(200,164,78,.16), transparent 60%),
+    #0c0b0a;
+  border-color: #2c2a27;
+}
+.duo__panel--dark h3, .duo__panel--dark p { color: #f8f5ef; }
+.duo__panel--dark p { color: #b8b2a8; }
+.duo__panel h3 { font-size: var(--text-xl); font-weight: 700; }
+.duo__panel p { color: var(--color-text-muted); max-width: 38ch; }
+
+/* ============================================================
+   9. NIEUWS / LIJST-RIJEN (Volvo "Latest News")
+   ============================================================ */
+.newslist { display: grid; gap: var(--space-8); }
+.newsrow {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-divider);
+}
+.newsrow__media { aspect-ratio: 16 / 11; overflow: hidden; border-radius: var(--radius-md); background: var(--color-surface-2); }
+.newsrow__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.newsrow:hover .newsrow__media img { transform: scale(1.05); }
+.newsrow__meta {
+  display: flex; justify-content: space-between; gap: var(--space-4);
+  font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--color-text-faint); margin-bottom: var(--space-3);
+}
+.newsrow__meta .tag { color: var(--color-primary); }
+.newsrow h3 { font-size: var(--text-lg); font-weight: 700; max-width: none; }
+.newsrow p { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--space-3); }
+
+/* ============================================================
+   10. SECTIE-VARIANTEN
+   ============================================================ */
+.section--surface { background: var(--color-surface); border-block: 1px solid var(--color-divider); }
+.section--tight { padding-block: clamp(var(--space-12), 6vw, var(--space-20)); }
+.bleed-wrap { max-width: var(--content-wide); margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px) {
+  .cardrow { grid-template-columns: repeat(2, 1fr); }
+  .feature-row { grid-template-columns: 1fr; gap: var(--space-8); }
+  .feature-row--reverse .feature-row__media { order: 0; }
+  .newsrow { grid-template-columns: 200px 1fr; gap: var(--space-5); }
+}
+@media (max-width: 640px) {
+  .cardrow, .cardrow--3, .cardrow--2 { grid-template-columns: 1fr; gap: var(--space-6); }
+  .duo { grid-template-columns: 1fr; }
+  .newsrow { grid-template-columns: 1fr; gap: var(--space-4); }
+  .newsrow__media { aspect-ratio: 16 / 9; }
+}
