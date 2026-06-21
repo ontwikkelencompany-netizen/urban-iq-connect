@@ -1,0 +1,119 @@
+/* ============================================================
+   URBAN IQ CONNECT — Design System (tokens)
+   Merk: IronCub / Urban IQ — industrieel premium, zwart-goud
+   Fonts: Barlow Condensed (display) + Inter (body)
+   ============================================================ */
+
+:root,
+[data-theme='dark'] {
+  /* ---- Type scale (fluid) ---- */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+  --text-hero: clamp(3rem, 0.5rem + 7vw, 7.5rem);
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ---- Radius ---- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-full: 9999px;
+
+  /* ---- Content widths ---- */
+  --content-narrow: 680px;
+  --content-default: 1040px;
+  --content-wide: 1280px;
+
+  /* ---- Transitions ---- */
+  --transition-interactive: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Fonts ---- */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================================
+   DARK MODE = hoofdtaal (industrieel premium)
+   ============================================================ */
+:root,
+[data-theme='dark'] {
+  /* IronCub kern: zwart-goud-cream */
+  --color-bg: #121110;
+  --color-surface: #1a1918;
+  --color-surface-2: #201f1d;
+  --color-surface-offset: #26241f;
+  --color-divider: #2c2a27;
+  --color-border: #353230;
+
+  --color-text: #f8f5ef;          /* cream */
+  --color-text-muted: #a8a39a;
+  --color-text-faint: #6e6a63;
+  --color-text-inverse: #121110;
+
+  /* Amber/goud accent — exact uit Urban IQ-logo */
+  --color-primary: #e8a93c;       /* logo-amber */
+  --color-primary-hover: #f3bb55;
+  --color-primary-active: #cf9530;
+  --color-primary-deep: #c5941a;  /* OC goud */
+  --color-primary-highlight: #2e2719;
+
+  --color-success: #6daa45;
+  --color-error: #d16363;
+  --color-warning: #e8af34;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --shadow-gold: 0 8px 30px rgba(200, 164, 78, 0.18);
+}
+
+/* ============================================================
+   LIGHT MODE = cream-basis (toegankelijk, voor brochure-views)
+   ============================================================ */
+[data-theme='light'] {
+  --color-bg: #f8f5ef;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3efe6;
+  --color-surface-offset: #ece6d8;
+  --color-divider: #e2dccd;
+  --color-border: #d4ccba;
+
+  --color-text: #1a1918;
+  --color-text-muted: #5e5950;
+  --color-text-faint: #9a948a;
+  --color-text-inverse: #f8f5ef;
+
+  --color-primary: #b07d18;       /* dieper amber voor contrast op licht */
+  --color-primary-hover: #946914;
+  --color-primary-active: #785411;
+  --color-primary-deep: #c5941a;
+  --color-primary-highlight: #f6ecd4;
+
+  --color-success: #437a22;
+  --color-error: #b03636;
+  --color-warning: #b07a00;
+
+  --shadow-sm: 0 1px 2px rgba(26, 25, 24, 0.06);
+  --shadow-md: 0 8px 24px rgba(26, 25, 24, 0.1);
+  --shadow-lg: 0 24px 60px rgba(26, 25, 24, 0.14);
+  --shadow-gold: 0 8px 30px rgba(168, 127, 32, 0.16);
+}

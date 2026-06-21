@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo aanvragen &amp; contact — Urban IQ Connect</title>
+    <meta name="description" content="Plan een demo op je eigen werf of stel je vraag. Vertel ons je toepassing en regio, dan koppelen we de juiste machine en dichtstbijzijnde dealer." />
+    <link rel="canonical" href="https://urbaniqconnect.com/contact.html" />
+    <meta name="theme-color" content="#121110" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23121110'/%3E%3Cpath d='M9 22V10l7 5 7-5v12' fill='none' stroke='%23e8a93c' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <a href="#main" class="sr-only">Naar hoofdinhoud</a>
+    <div data-include="header"></div>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="page-hero__bg"></div>
+        <div class="wrap">
+          <nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span>/</span><span aria-current="page">Contact</span></nav>
+          <div class="page-hero__inner">
+            <span class="eyebrow">Demo &amp; contact</span>
+            <h1>Plan een demo op jouw eigen werf</h1>
+            <p class="lead">We laten de Urban IQ-lijn zien waar jij werkt. Vertel ons je toepassing en regio, dan koppelen we de juiste machine en de dichtstbijzijnde dealer.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="wrap">
+          <div class="contact-layout">
+            <form class="form" data-contact-form novalidate aria-label="Contactformulier">
+              <div class="form__row">
+                <div class="field"><label for="c-naam">Naam *</label><input id="c-naam" name="naam" type="text" required /></div>
+                <div class="field"><label for="c-bedrijf">Bedrijf</label><input id="c-bedrijf" name="bedrijf" type="text" /></div>
+              </div>
+              <div class="form__row">
+                <div class="field"><label for="c-email">E-mail *</label><input id="c-email" name="email" type="email" required /></div>
+                <div class="field"><label for="c-tel">Telefoon</label><input id="c-tel" name="telefoon" type="tel" /></div>
+              </div>
+              <div class="form__row">
+                <div class="field">
+                  <label for="c-interesse">Interesse</label>
+                  <select id="c-interesse" name="interesse">
+                    <option>Demo aanvragen</option>
+                    <option>Offerte — T-300 (rups)</option>
+                    <option>Offerte — W-300 (wielen)</option>
+                    <option>Aanbouwdelen</option>
+                    <option>Connect-platform</option>
+                    <option>Service &amp; onderhoud</option>
+                    <option>Anders</option>
+                  </select>
+                </div>
+                <div class="field"><label for="c-regio">Regio</label><input id="c-regio" name="regio" type="text" placeholder="Bijv. Zuid-Holland" /></div>
+              </div>
+              <div class="field"><label for="c-bericht">Je bericht *</label><textarea id="c-bericht" name="bericht" required placeholder="Vertel ons over je toepassing en ondergrond..."></textarea></div>
+              <div class="field field--check"><input id="c-akkoord" name="akkoord" type="checkbox" required /><label for="c-akkoord">Ik ga akkoord met de verwerking van mijn gegevens conform de <a href="privacy.html">privacyverklaring</a>. *</label></div>
+              <p class="form-status" data-form-status aria-live="polite"></p>
+              <button class="btn btn--primary" type="submit">Verstuur aanvraag</button>
+            </form>
+            <aside class="contact-aside">
+              <div class="contact-aside__block">
+                <h3>Direct contact</h3>
+                <p><a href="mailto:info@urbaniqconnect.com">info@urbaniqconnect.com</a></p>
+              </div>
+              <div class="contact-aside__block">
+                <h3>Reactietijd</h3>
+                <p>We reageren binnen één werkdag. Bij een demo-aanvraag plannen we direct een geschikt moment in.</p>
+              </div>
+              <div class="contact-aside__block">
+                <h3>Dealer worden?</h3>
+                <p>Wil je partner worden in plaats van klant? <a href="dealer.html">Meld je aan als dealer →</a></p>
+              </div>
+              <div class="contact-aside__block">
+                <h3>Onderneming</h3>
+                <p>Urban IQ Connect is een product van IronCub.<br />Noordwijk, Zuid-Holland, Nederland</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="js/site.js"></script>
+  </body>
+</html>
